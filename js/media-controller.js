@@ -39,7 +39,7 @@ if (navigator.mediaDevices === undefined) {
             })
         })
         .catch(err => {
-            console.log(err.name, err.message);
+            setToast("warning", err.name, err.message, "danger");
         })
 }
 
@@ -70,16 +70,20 @@ navigator.mediaDevices.getUserMedia(constraintObj)
             mediaRecorder.start();
             if(mediaRecorder.state=="recording"){
                 setToast("video-camera", "Recording Started", 
-                "Media recording started successfully.", "success");
+                    "Media recording started successfully.", "success");
             }
+            $("#btnStart").prop('disabled', true);
+            $("#btnStop").prop('disabled', false);
         })
         stop.addEventListener('click', (ev) => {
             mediaRecorder.stop();
-            // console.log(mediaRecorder.state);
             if(mediaRecorder.state=="inactive"){
                 setToast("stop-circle", "Recording Stopped", 
-                "Media recording stopped.", "info");
+                    "Media recording stopped.", "info");
             }
+            $("#btnStart").prop('disabled', false);
+            $("#btnStop").prop('disabled', true);
+
         });
         mediaRecorder.ondataavailable = function (ev) {
             chunks.push(ev.data);
@@ -94,8 +98,6 @@ navigator.mediaDevices.getUserMedia(constraintObj)
         }
     })
     .catch(function (err) {
-        console.log(err.name, err.message);
-        console.log(err.name, err.message);
         setToast("warning", err.name, err.message, "danger");
     });
 
