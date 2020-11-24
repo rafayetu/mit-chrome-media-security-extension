@@ -69,14 +69,16 @@ navigator.mediaDevices.getUserMedia(constraintObj)
         start.addEventListener('click', (ev) => {
             mediaRecorder.start();
             if(mediaRecorder.state=="recording"){
-                setToast("video-camera", "Recording Started", "Media recording started successfully.");
+                setToast("video-camera", "Recording Started", 
+                "Media recording started successfully.", "success");
             }
         })
         stop.addEventListener('click', (ev) => {
             mediaRecorder.stop();
             // console.log(mediaRecorder.state);
             if(mediaRecorder.state=="inactive"){
-                setToast("stop-circle", "Recording Stopped", "Media recording stopped.");
+                setToast("stop-circle", "Recording Stopped", 
+                "Media recording stopped.", "info");
             }
         });
         mediaRecorder.ondataavailable = function (ev) {
