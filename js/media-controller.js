@@ -95,6 +95,8 @@ navigator.mediaDevices.getUserMedia(constraintObj)
     })
     .catch(function (err) {
         console.log(err.name, err.message);
+        console.log(err.name, err.message);
+        setToast("warning", err.name, err.message, "danger");
     });
 
 
