@@ -13,6 +13,10 @@ function setToast(icon, header, body, type){
     toast.toast('show');
 }
 
+const capitalize = (s) => {
+    if (typeof s !== 'string') return ''
+    return s.charAt(0).toUpperCase() + s.slice(1)
+}
 
 $(document).ready(function(){
     // setToast;

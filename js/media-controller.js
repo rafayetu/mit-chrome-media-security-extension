@@ -34,8 +34,11 @@ if (navigator.mediaDevices === undefined) {
     navigator.mediaDevices.enumerateDevices()
         .then(devices => {
             devices.forEach(device => {
-                console.log(device.kind.toUpperCase(), device.label);
+                console.log(capitalize(device.kind), device.label);
                 //, device.deviceId
+                $("#deviceLog").append(
+                    `<b>${capitalize(device.kind)}:</b>&nbsp; ${device.deviceId} - ${device.label}<br>`
+                );
             })
         })
         .catch(err => {
