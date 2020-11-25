@@ -48,7 +48,7 @@ if (navigator.mediaDevices === undefined) {
 navigator.mediaDevices.getUserMedia(constraintObj)
     .then(function (mediaStreamObj) {
         //connect the media stream to the first video element
-        let video = document.querySelector('video');
+        let video = document.querySelector('#vid1');
         if ("srcObject" in video) {
             video.srcObject = mediaStreamObj;
         } else {
